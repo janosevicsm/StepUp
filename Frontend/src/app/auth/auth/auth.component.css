@@ -1,0 +1,179 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 800px;
+  max-width: 100%;
+  min-height: 600px;
+  background-color: #F5F5F5;
+}
+
+form{
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.field{
+  width: 100%;
+  color: #F5F5F5;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
+.submitBtn, .switchOverlayButton {
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+  transition: transform 0.5s ease-in;
+  color: #0B4B66;
+}
+
+.submitBtn {
+  background-color: #0B4B66;
+  color: #F5F5F5;
+  width: 40%;
+  font-size: large;
+  font-weight: 300;
+}
+
+.submitBtn:hover, .switchOverlayButton:hover {
+  transform: scale(1.1);
+}
+
+.form-title{
+  font-size: xx-large;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #0B4B66;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.auth-container.right-panel-active .login-container {
+  transform: translateX(100%);
+}
+
+.register-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.auth-container.right-panel-active .register-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.auth-container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background-image: url("../../../assets/AuthGIF.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.auth-container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.auth-container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.auth-container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+.overlay-title {
+  font-size: xxx-large;
+  font-weight: 500;
+}

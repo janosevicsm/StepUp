@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0B4B66;
+}
+h1 {margin: 0}
+
+mat-error, mat-label {
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
