@@ -1,0 +1,19 @@
+.nav-bar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: #F5841A;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar-left>button, .navbar-right>button {
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+  color: #0B4B66;
+}
+
