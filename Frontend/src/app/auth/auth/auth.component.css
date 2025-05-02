@@ -1,5 +1,5 @@
 .auth-container {
-  margin: auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
   border-radius: 25px;
@@ -10,7 +10,6 @@
   max-width: 100%;
   min-height: 600px;
   background-color: #F5F5F5;
-  margin-top: 50px;
 }
 
 form{

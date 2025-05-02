@@ -6,7 +6,6 @@ import {Router, RouterLink} from '@angular/router';
 @Component({
   selector: 'app-nav-bar',
   imports: [
-    MatToolbar,
     MatButton,
     RouterLink
   ],

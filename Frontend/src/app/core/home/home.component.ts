@@ -8,7 +8,6 @@ import {NgOptimizedImage} from '@angular/common';
   imports: [
     MatButton,
     RouterLink,
-    NgOptimizedImage
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
