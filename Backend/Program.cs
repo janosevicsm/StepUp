@@ -1,3 +1,4 @@
+using Backend.Exceptions;
 using Backend.Infrastructure.Context;
 using Backend.Mappers;
 using Backend.Repositories.Implementations;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Services
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Mapper
 builder.Services.AddAutoMapper(typeof(ModelMapper));
@@ -37,8 +39,12 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureDeleted();
+    dbContext.Database.EnsureCreated();
     DbInitializer.Seed(dbContext);
 }
+
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
