@@ -17,6 +17,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontendApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 // Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
@@ -45,6 +55,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseMiddleware<ExceptionHandler>();
+
+app.UseCors("AllowFrontendApp");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

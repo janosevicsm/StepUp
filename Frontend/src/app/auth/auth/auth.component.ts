@@ -86,7 +86,23 @@ export class AuthComponent implements OnInit {
   }
 
   logIn() {
+    if (this.loginForm.valid) {
+      const credentials = {
+        email: this.loginForm.value.mail!,
+        password: this.loginForm.value.password!,
+      };
 
+      this.authService.login(credentials).subscribe({
+        next: (response) => {
+          localStorage.setItem('user', response.token);
+          this.authService.setUserLogged();
+          this.router.navigate(['home']).then(() => {});
+        },
+        error: (err) => {
+          alert('Login failed: ' + err.message);
+        },
+      });
+    }
   }
 
   register() {

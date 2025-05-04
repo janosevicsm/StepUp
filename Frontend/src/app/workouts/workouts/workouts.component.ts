@@ -38,6 +38,9 @@ export class WorkoutsComponent {
     note: new FormControl('')
   });
 
+  private readonly _currentYear = new Date().getFullYear();
+  readonly maxDate = new Date();
+
   submitWorkout() {
     if (this.workoutForm.valid) {
       console.log(this.workoutForm.value);

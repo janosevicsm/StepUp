@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class AuthService {
   userLogged$ = new BehaviorSubject<string>("");
   userLoggedState$ = this.userLogged$.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   isLoggedIn(): boolean {
     return localStorage.getItem('user') != null;
@@ -42,4 +44,22 @@ export class AuthService {
     }
     return '';
   }
+
+  login(credentials: LoginDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>(environment.apiHost + 'user/login', credentials);
+  }
+
+  logout(): void {
+    localStorage.removeItem("user");
+    this.setUserLogged();
+  }
+}
+
+interface LoginDto {
+  email: string;
+  password: string;
+}
+
+interface TokenDto {
+  token: string;
 }
