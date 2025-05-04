@@ -1,96 +1,98 @@
-<div class="auth-container"
-     [class.right-panel-active]="rightPanelActive"
-     (transitionend)="onTransitionEnd()">
-  <div class="form-container login-container"
-       [ngStyle]="{ display: hideLogin ? 'none' : 'flex' }">
-    <form
-      [formGroup]="loginForm"
-      (ngSubmit)="logIn()"
-    >
+<div class="wrap-container">
+  <div class="auth-container"
+       [class.right-panel-active]="rightPanelActive"
+       (transitionend)="onTransitionEnd()">
+    <div class="form-container login-container"
+         [ngStyle]="{ display: hideLogin ? 'none' : 'flex' }">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="logIn()"
+      >
 
-      <h1 class="form-title">Sign In</h1>
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Email</mat-label>
-        <input matInput type="text" name="mail" formControlName="mail"/>
-        <mat-error *ngIf="loginForm?.get('mail')?.invalid">Invalid email</mat-error>
-      </mat-form-field>
+        <h1 class="form-title">Sign In</h1>
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" name="mail" formControlName="mail"/>
+          <mat-error *ngIf="loginForm?.get('mail')?.invalid">Invalid email</mat-error>
+        </mat-form-field>
 
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Password</mat-label>
-        <input matInput [type]="hideLoginPassword ? 'password' : 'text'" name="password" formControlName="password"/>
-        <button mat-icon-button matSuffix type="button" (click)="changePasswordState('login')" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideLoginPassword">
-          <mat-icon>{{hideLoginPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <mat-error *ngIf="loginForm?.get('password')?.invalid">Invalid password</mat-error>
-      </mat-form-field>
-
-
-      <button mat-raised-button type="submit" class="submitBtn">Sign In</button>
-
-    </form>
-  </div>
-  <div class="form-container register-container">
-    <form
-      [formGroup]="registrationForm"
-      (ngSubmit)="register()">
-
-      <h1 class="form-title">Register</h1>
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Name</mat-label>
-        <input matInput type="text" name="name" formControlName="name"/>
-        <mat-error *ngIf="registrationForm?.get('name')?.invalid">Invalid name</mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Surname</mat-label>
-        <input matInput type="text" name="surname" formControlName="surname"/>
-        <mat-error *ngIf="registrationForm?.get('surname')?.invalid">Invalid surname</mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Email</mat-label>
-        <input matInput type="text" name="mail" formControlName="email"/>
-        <mat-error *ngIf="registrationForm?.get('email')?.invalid">Invalid email</mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Password</mat-label>
-        <input matInput [type]="hideRegisterPassword ? 'password' : 'text'" name="password"
-               formControlName="password"/>
-        <button mat-icon-button matSuffix type="button" (click)="changePasswordState('register')" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hideRegisterPassword">
-          <mat-icon>{{hideRegisterPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <mat-error *ngIf="registrationForm?.get('password')?.invalid">Password must contain at least 8 characters</mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="field" hideRequiredMarker>
-        <mat-label>Confirm password</mat-label>
-        <input matInput [type]="hideRegisterConfirmPassword ? 'password' : 'text'"
-               name="confirmPassword" formControlName="confirmPassword"/>
-        <button mat-icon-button matSuffix type="button" (click)="changePasswordState('registerConfirm')"
-                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRegisterConfirmPassword">
-          <mat-icon>{{hideRegisterConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <mat-error *ngIf="registrationForm?.get('confirmPassword')?.invalid">Passwords does not match</mat-error>
-      </mat-form-field>
-
-      <button mat-raised-button type="submit" class="submitBtn">Register</button>
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hideLoginPassword ? 'password' : 'text'" name="password" formControlName="password"/>
+          <button mat-icon-button matSuffix type="button" (click)="changePasswordState('login')" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideLoginPassword">
+            <mat-icon>{{hideLoginPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm?.get('password')?.invalid">Invalid password</mat-error>
+        </mat-form-field>
 
 
-    </form>
-  </div>
-  <div class="overlay-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-right">
-        <h1 class="overlay-title">Welcome Back</h1>
-        <p>Don't have an account?</p>
-        <button mat-raised-button class="switchOverlayButton" id="switchToRegisterButton" (click)="switchToRegister()">Register</button>
-      </div>
-      <div class="overlay-panel overlay-left">
-        <h1 class="overlay-title">Start Your Journey</h1>
-        <p>Already have an account?</p>
-        <button mat-raised-button class="switchOverlayButton" id="switchToLoginButton" (click)="switchToLogin()">Sign In</button>
+        <button mat-raised-button type="submit" class="submitBtn">Sign In</button>
+
+      </form>
+    </div>
+    <div class="form-container register-container">
+      <form
+        [formGroup]="registrationForm"
+        (ngSubmit)="register()">
+
+        <h1 class="form-title">Register</h1>
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Name</mat-label>
+          <input matInput type="text" name="name" formControlName="name"/>
+          <mat-error *ngIf="registrationForm?.get('name')?.invalid">Invalid name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Surname</mat-label>
+          <input matInput type="text" name="surname" formControlName="surname"/>
+          <mat-error *ngIf="registrationForm?.get('surname')?.invalid">Invalid surname</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" name="mail" formControlName="email"/>
+          <mat-error *ngIf="registrationForm?.get('email')?.invalid">Invalid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hideRegisterPassword ? 'password' : 'text'" name="password"
+                 formControlName="password"/>
+          <button mat-icon-button matSuffix type="button" (click)="changePasswordState('register')" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hideRegisterPassword">
+            <mat-icon>{{hideRegisterPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="registrationForm?.get('password')?.invalid">Password must contain at least 8 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field" hideRequiredMarker>
+          <mat-label>Confirm password</mat-label>
+          <input matInput [type]="hideRegisterConfirmPassword ? 'password' : 'text'"
+                 name="confirmPassword" formControlName="confirmPassword"/>
+          <button mat-icon-button matSuffix type="button" (click)="changePasswordState('registerConfirm')"
+                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRegisterConfirmPassword">
+            <mat-icon>{{hideRegisterConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="registrationForm?.get('confirmPassword')?.invalid">Passwords does not match</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" class="submitBtn">Register</button>
+
+
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1 class="overlay-title">Welcome Back</h1>
+          <p>Don't have an account?</p>
+          <button mat-raised-button class="switchOverlayButton" id="switchToRegisterButton" (click)="switchToRegister()">Register</button>
+        </div>
+        <div class="overlay-panel overlay-left">
+          <h1 class="overlay-title">Start Your Journey</h1>
+          <p>Already have an account?</p>
+          <button mat-raised-button class="switchOverlayButton" id="switchToLoginButton" (click)="switchToLogin()">Sign In</button>
+        </div>
       </div>
     </div>
   </div>

@@ -106,7 +106,22 @@ export class AuthComponent implements OnInit {
   }
 
   register() {
-
+    if (this.registrationForm.valid) {
+      const credentials = {
+        firstName: this.registrationForm.value.name!,
+        lastName: this.registrationForm.value.surname!,
+        email: this.registrationForm.value.email!,
+        password: this.registrationForm.value.password!,
+      }
+      this.authService.register(credentials).subscribe({
+        next: (response) => {
+          alert("Registration successful");
+        },
+        error: (err) => {
+          alert('Login failed: ' + err.message);
+        },
+      });
+    }
   }
 
   changePasswordState(type: String){

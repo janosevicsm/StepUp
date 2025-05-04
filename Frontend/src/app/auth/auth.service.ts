@@ -3,6 +3,8 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../environment/environment';
+import {LoginDto, RegisterDto, TokenDto, UserDto} from '../shared/model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -49,17 +51,12 @@ export class AuthService {
     return this.http.post<TokenDto>(environment.apiHost + 'user/login', credentials);
   }
 
+  register(credentials: RegisterDto): Observable<UserDto> {
+    return this.http.post<UserDto>(environment.apiHost + 'user/register', credentials);
+  }
+
   logout(): void {
     localStorage.removeItem("user");
     this.setUserLogged();
   }
-}
-
-interface LoginDto {
-  email: string;
-  password: string;
-}
-
-interface TokenDto {
-  token: string;
 }
