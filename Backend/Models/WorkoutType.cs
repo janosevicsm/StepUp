@@ -2,7 +2,7 @@ namespace Backend.Models;
 
 public enum WorkoutType
 {
-    Cardio,
-    Weightlifting,
-    Flexibility
+    Cardio = 0,
+    Weightlifting = 1,
+    Flexibility = 2
 }

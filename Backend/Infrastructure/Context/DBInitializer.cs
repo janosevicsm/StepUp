@@ -13,13 +13,8 @@ public static class DbInitializer
             {
                 new User
                 {
-                    Email = "john.doe@example.com", FirstName = "John", LastName = "Doe",
-                    Password = "$2a$10$0.zpHGthXODIO2nOf0nOBuemPSs9itnlgrvNbv5dSu4N5lziD/NBW"
-                },
-                new User
-                {
-                    Email = "jane.doe@example.com", FirstName = "Jane", LastName = "Doe",
-                    Password = "$2a$10$0.zpHGthXODIO2nOf0nOBuemPSs9itnlgrvNbv5dSu4N5lziD/NBW"
+                    Email = "marko@mail.com", FirstName = "Marko", LastName = "Janosevic",
+                    Password = "$2a$11$pNf4jRIpb6L/zGsriuHeV.eaDpGT0Wbwe07oaVdinhUCHcGIGV2Aq"
                 }
             });
         }

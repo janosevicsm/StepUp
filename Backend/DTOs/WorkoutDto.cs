@@ -5,7 +5,7 @@ namespace Backend.DTOs;
 public class WorkoutDto
 {
     public int Id { get; set; }
-    public required int UserId { get; set; }
+    public int UserId { get; set; }
     public WorkoutType? WorkoutType { get; set; }
     public int Duration { get; set; } 
     public int Calories { get; set; }
