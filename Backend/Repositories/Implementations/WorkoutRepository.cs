@@ -19,6 +19,7 @@ public class WorkoutRepository : IWorkoutRepository
     {
         return await _context.Workouts
             .Where(w => w.UserId == userId)
+            .OrderByDescending(w => w.DateTime)
             .ToListAsync();
     }
     

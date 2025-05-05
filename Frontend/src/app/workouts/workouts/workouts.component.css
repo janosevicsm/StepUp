@@ -3,10 +3,15 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 85vh;
+  overflow: hidden;
+}
+
+.new-workout-container {
+  width: 40%;
 }
 
 .workout-panel {
-  width: 50%;
   padding: 0 20px;
 }
 
@@ -45,4 +50,56 @@ mat-option, mat-select {
   color: #F5841A;
   background-color: #0b4b66;
   font-size: larger;
+}
+
+.workouts-list-container {
+  overflow-y: auto;
+  width: 60%;
+  height: 100%;
+}
+
+.workouts-list {
+  color: #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.workout-card {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #0b4b66;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.workout-card > * {
+  margin: 0;
+}
+
+.workout-card h3 {
+  color: #F5841A;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F5841A;
+  border-radius: 10px;
+  border: 3px solid #0b4b66;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #F5841A;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b4b66;
+  border-radius: 10px;
 }

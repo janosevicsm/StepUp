@@ -3,10 +3,15 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app/app.routes';
-import {provideHttpClient} from '@angular/common/http';
+import {provideHttpClient, withInterceptors, withInterceptorsFromDi} from '@angular/common/http';
+import {tokenInterceptor} from './app/auth/tokenInterceptor';
 
 const appConfig = {
-  providers: [provideRouter(routes), provideAnimations(), provideHttpClient()]
+  providers: [
+    provideRouter(routes),
+    provideAnimations(),
+    provideHttpClient(withInterceptors([tokenInterceptor]))
+  ]
 };
 
 bootstrapApplication(AppComponent, appConfig)

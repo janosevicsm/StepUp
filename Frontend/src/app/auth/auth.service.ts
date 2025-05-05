@@ -37,12 +37,27 @@ export class AuthService {
     this.userLogged$.next(this.getUserMail());
   }
 
+  getUserId(): number {
+    if (this.isLoggedIn()) {
+      const token: string | null = localStorage.getItem('user');
+      if (!token) return -1;
+
+      const helper = new JwtHelperService();
+      const decoded = helper.decodeToken(token);
+      const id = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+      return Number(id); // cast to number
+    }
+    return -1;
+  }
+
   getUserMail(): string {
     if (this.isLoggedIn()) {
-      const accessTokenString: any = localStorage.getItem('user');
-      const accessToken = accessTokenString;
+      const token: string | null = localStorage.getItem('user');
+      if (!token) return '';
+
       const helper = new JwtHelperService();
-      return helper.decodeToken(accessToken).email;
+      const decoded = helper.decodeToken(token);
+      return decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] || '';
     }
     return '';
   }

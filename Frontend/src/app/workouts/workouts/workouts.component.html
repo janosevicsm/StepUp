@@ -1,6 +1,6 @@
 <div class="workouts-container">
   <div class="workout-panel new-workout-container">
-    <form [formGroup]="workoutForm" (ngSubmit)="submitWorkout()">
+    <form [formGroup]="workoutForm" (ngSubmit)="addWorkout()">
       <h2>Add New Workout</h2>
 
       <mat-form-field class="field" appearance="fill">
@@ -64,5 +64,18 @@
 
   <div class="workout-panel workouts-list-container">
     <h2>My Workouts</h2>
+    <div class="workouts-list">
+      <div *ngFor="let workout of workouts" class="workout-card">
+        <h3 [ngStyle]="{ color: getWorkoutColor(workout.workoutType) }">
+          {{ getWorkoutTypeLabel(workout.workoutType) }}
+        </h3>
+        <p><strong>Date:</strong> {{ workout.dateTime | date: 'mediumDate' }} {{ workout.dateTime | date: 'shortTime' }}</p>
+        <p><strong>Duration:</strong> {{ workout.duration }} min</p>
+        <p><strong>Calories:</strong> {{ workout.calories }} kcal</p>
+        <p><strong>Intensity:</strong> {{ workout.intensity }}/10</p>
+        <p><strong>Fatigue:</strong> {{ workout.fatigue }}/10</p>
+        <p><strong>Notes:</strong> {{ workout.notes || 'No notes' }}</p>
+      </div>
+    </div>
   </div>
 </div>
