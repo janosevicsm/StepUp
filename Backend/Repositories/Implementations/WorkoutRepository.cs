@@ -1,3 +1,4 @@
+using System.Globalization;
 using Backend.Exceptions;
 using Backend.Infrastructure.Context;
 using Backend.Models;
@@ -38,4 +39,15 @@ public class WorkoutRepository : IWorkoutRepository
         await _context.SaveChangesAsync();
         return workout;
     }
+    
+    public async Task<List<Workout>> GetWorkoutsForMonth(int userId, int year, int month)
+    {
+        return await _context.Workouts
+            .Where(w => w.UserId == userId &&
+                        w.DateTime.Year == year &&
+                        w.DateTime.Month == month)
+            .ToListAsync();
+    }
+
+    
 }

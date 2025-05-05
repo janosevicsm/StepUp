@@ -1,6 +1,6 @@
-namespace Backend.Models;
+namespace Backend.DTOs;
 
-public class Progress
+public class ProgressDto
 {
     public int Week { get; set; }
     public int TotalDuration { get; set; }

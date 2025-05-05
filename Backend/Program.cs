@@ -59,6 +59,7 @@ builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 // Services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
+builder.Services.AddScoped<IProgressService, ProgressService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Mapper

@@ -43,4 +43,15 @@ public class WorkoutController : ControllerBase
         var workoutResponse = _mapper.Map<WorkoutDto>(newWorkout);
         return CreatedAtAction(nameof(GetWorkoutsByUser), new { userId = workout.UserId }, workoutResponse);
     }
+    
+    [Authorize]
+    [AuthorizeUserId]
+    [HttpGet(WorkoutRoutes.GetProgress)]
+    public async Task<IActionResult> GetProgress(int userId, int year, int month)
+    {
+        var progress = await _workoutService.GetProgressAsync(userId, year, month);
+        var progressResponse = _mapper.Map<List<ProgressDto>>(progress);
+
+        return Ok(progressResponse);
+    }
 }
