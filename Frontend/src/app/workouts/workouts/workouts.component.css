@@ -1,0 +1,86 @@
+.workouts-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 85vh;
+  overflow: hidden;
+}
+
+.new-workout-container {
+  width: 40%;
+}
+
+.workout-panel {
+  padding: 0 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h2 {
+  color: #F5841A;
+}
+
+mat-option, mat-select {
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row>*{
+  flex-grow: 1;
+}
+
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #F5F5F5;
+}
+
+#add-workout-button {
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+  color: #F5841A;
+  background-color: #0b4b66;
+  font-size: larger;
+}
+
+.workouts-list-container {
+  overflow-y: auto;
+  width: 60%;
+  height: 100%;
+}
+
+.workouts-list {
+  color: #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.workout-card {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #0b4b66;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.workout-card > * {
+  margin: 0;
+}
+
+.workout-card h3 {
+  color: #F5841A;
+}

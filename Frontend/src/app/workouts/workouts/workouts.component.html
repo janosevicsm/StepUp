@@ -1,0 +1,81 @@
+<div class="workouts-container">
+  <div class="workout-panel new-workout-container">
+    <form [formGroup]="workoutForm" (ngSubmit)="addWorkout()">
+      <h2>Add New Workout</h2>
+
+      <mat-form-field class="field" appearance="fill">
+        <mat-label>Workout Type</mat-label>
+        <mat-select formControlName="type" required>
+          <mat-option value="cardio">Cardio</mat-option>
+          <mat-option value="weight-lifting">Weight Lifting</mat-option>
+          <mat-option value="flexibility">Flexibility</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="field" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="date" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="field" appearance="fill">
+        <mat-label>Time</mat-label>
+        <input matInput type="time" formControlName="time" />
+      </mat-form-field>
+
+      <div class="form-row">
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Duration (minutes)</mat-label>
+          <input matInput type="number" formControlName="duration" />
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Calories</mat-label>
+          <input matInput type="number" formControlName="calories" />
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <div class="slider-group">
+          <label>Intensity</label>
+          <mat-slider min="1" max="10" step="1" discrete>
+            <input matSliderThumb formControlName="intensity">
+          </mat-slider>
+        </div>
+        <div class="slider-group">
+          <label>Fatigue</label>
+          <mat-slider min="1" max="10" step="1" discrete>
+            <input matSliderThumb formControlName="fatigue">
+          </mat-slider>
+        </div>
+      </div>
+
+      <mat-form-field class="field" appearance="fill">
+        <mat-label>Note</mat-label>
+        <textarea matInput formControlName="note" rows="3"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button id="add-workout-button" type="submit" [disabled]="!workoutForm.valid">
+        Add Workout
+      </button>
+    </form>
+  </div>
+
+  <div class="workout-panel workouts-list-container">
+    <h2>My Workouts</h2>
+    <div class="workouts-list">
+      <div *ngFor="let workout of workouts" class="workout-card">
+        <h3 [ngStyle]="{ color: getWorkoutColor(workout.workoutType) }">
+          {{ getWorkoutTypeLabel(workout.workoutType) }}
+        </h3>
+        <p><strong>Date:</strong> {{ workout.dateTime | date: 'mediumDate' }} {{ workout.dateTime | date: 'shortTime' }}</p>
+        <p><strong>Duration:</strong> {{ workout.duration }} min</p>
+        <p><strong>Calories:</strong> {{ workout.calories }} kcal</p>
+        <p><strong>Intensity:</strong> {{ workout.intensity }}/10</p>
+        <p><strong>Fatigue:</strong> {{ workout.fatigue }}/10</p>
+        <p><strong>Notes:</strong> {{ workout.notes || 'No notes' }}</p>
+      </div>
+    </div>
+  </div>
+</div>
