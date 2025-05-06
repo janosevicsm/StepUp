@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {CommonModule, NgIf} from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -29,6 +30,8 @@ export class AuthComponent implements OnInit {
   hideRegisterConfirmPassword: boolean = true;
   rightPanelActive = false;
   hideLogin = false;
+
+  private _snackBar = inject(MatSnackBar);
 
   switchToRegister() {
     this.rightPanelActive = true;
@@ -99,7 +102,7 @@ export class AuthComponent implements OnInit {
           this.router.navigate(['home']).then(() => {});
         },
         error: (err) => {
-          alert('Login failed: ' + err.message);
+          this.openSnackBar("Login failed. Check your credentials.", "OK");
         },
       });
     }
@@ -115,10 +118,11 @@ export class AuthComponent implements OnInit {
       }
       this.authService.register(credentials).subscribe({
         next: (response) => {
-          alert("Registration successful");
+          this.openSnackBar("Registration successful.", "OK");
+          this.switchToLogin();
         },
         error: (err) => {
-          alert('Login failed: ' + err.message);
+          this.openSnackBar("Registration failed.", "OK");
         },
       });
     }
@@ -136,7 +140,12 @@ export class AuthComponent implements OnInit {
         this.hideRegisterConfirmPassword = !this.hideRegisterConfirmPassword;
         break;
     }
+  }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000
+    });
   }
 
 }
