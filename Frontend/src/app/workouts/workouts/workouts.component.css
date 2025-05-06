@@ -84,22 +84,3 @@ mat-option, mat-select {
 .workout-card h3 {
   color: #F5841A;
 }
-
-::-webkit-scrollbar {
-  width: 15px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #F5841A;
-  border-radius: 10px;
-  border: 3px solid #0b4b66;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #F5841A;
-}
-
-::-webkit-scrollbar-track {
-  background: #0b4b66;
-  border-radius: 10px;
-}

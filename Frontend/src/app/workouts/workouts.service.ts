@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {WorkoutDto} from '../shared/model';
+import {ProgressDto, WorkoutDto} from '../shared/model';
 import {environment} from '../environment/environment';
 
 @Injectable({
@@ -17,5 +17,13 @@ export class WorkoutsService {
 
   addWorkout(workoutDto: WorkoutDto): Observable<WorkoutDto> {
     return this.http.post<WorkoutDto>(environment.apiHost + 'workout/add', workoutDto)
+  }
+
+  getProgress(userId: number, year: number, month: number): Observable<ProgressDto[]> {
+    const params = new HttpParams()
+      .set('year', year.toString())
+      .set('month', month.toString());
+
+    return this.http.get<ProgressDto[]>(environment.apiHost + 'workout/progress/' + userId, { params });
   }
 }

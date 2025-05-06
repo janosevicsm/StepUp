@@ -1,4 +1,3 @@
-using System.Globalization;
 using Backend.Exceptions;
 using Backend.Infrastructure.Context;
 using Backend.Models;

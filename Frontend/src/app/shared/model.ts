@@ -35,6 +35,14 @@ export interface WorkoutDto {
   dateTime: Date;
 }
 
+export interface ProgressDto {
+  week: number;
+  totalDuration: number;
+  workoutCount: number;
+  averageIntensity: number;
+  averageFatigue: number;
+}
+
 export enum WorkoutType {
 
 }
